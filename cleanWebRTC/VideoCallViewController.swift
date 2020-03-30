@@ -12,6 +12,7 @@ import WebRTC
 
 protocol VideoCallViewControllerDelegate: class {
     func callDidFinish(_ viewController: VideoCallViewController)
+    func callDidFinish(_ viewController: VideoCallViewController, error: Error)
 }
 
 
@@ -51,10 +52,49 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     }
     
     
+    
+    // MARK: - Actions
+    @IBAction func hangUpButtonPressed(_ sender: Any) {
+        self.closeCallViewController()
+    }
+    
+    
+    @IBAction func microphoneButtonPressed(_ sender: Any) {
+    }
+    
+    
+    @IBAction func cameraButtonPressed(_ sender: Any) {
+    }
+    
+    
+    @IBAction func switchCameraButtonPressed(_ sender: Any) {
+    }
+    
+    
+    
+    // MARK: - Dial, Hang Up
     func connect() {
         let settingsModel = ARDSettingsModel()
         self.client = ARDAppClient.init(delegate: self)
         self.client?.connectToRoom(withId: self.roomId!, settings: settingsModel, isLoopback: false)
+    }
+    
+    
+    
+    func hangUp() {
+        self.remoteVideoTrack = nil
+        
+        self.localVideoView?.captureSession = nil
+        self.captureController?.stopCapture()
+        self.captureController = nil
+        
+        self.client?.disconnect()
+        self.closeCallViewController()
+    }
+    
+    
+    func closeCallViewController() {
+        delegate?.callDidFinish(self)
     }
     
     
@@ -68,6 +108,7 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
                 print("ARDAppClientState.connected")
             case ARDAppClientState.disconnected:
                 print("ARDAppClientState.disconnected")
+                //self.hangUp()
             default:
                 print("ARDAppClientState. unexpected case")
         }
@@ -124,31 +165,16 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     
     
     func appClient(_ client: ARDAppClient!, didError error: Error!) {
-        print(error.localizedDescription)
+        DispatchQueue.main.async {
+            print(error.localizedDescription)
+            self.showAlert(message: error.localizedDescription)
+        }
     }
+    
     
     func appClient(_ client: ARDAppClient!, didGetStats stats: [Any]!) {
     }
-    
-    
-    
-    // MARK: - Actions
-    @IBAction func hangUpButtonPressed(_ sender: Any) {
-        delegate?.callDidFinish(self)
-    }
-    
-    
-    @IBAction func microphoneButtonPressed(_ sender: Any) {
-    }
-    
-    
-    @IBAction func cameraButtonPressed(_ sender: Any) {
-    }
-    
-    
-    @IBAction func switchCameraButtonPressed(_ sender: Any) {
-    }
-    
+
     
     
     // MARK: - RTCVideoViewDelegate, LayoutSubviews
@@ -234,5 +260,16 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
         self.view.bringSubviewToFront(self.toolBar)
     }
     
+    
+    
+    // MARK: - Alert Message
+    func showAlert(message: String) {
+        let alert   = UIAlertController(title: nil, message: message, preferredStyle: UIAlertController.Style.alert)
+        let action  = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (UIAlertAction) in
+            self.hangUp()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }

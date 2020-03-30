@@ -56,14 +56,25 @@ class EntryViewController: UIViewController, UITextFieldDelegate, RTCAudioSessio
     
     
     func callDidFinish(_ viewController: VideoCallViewController) {
-        if !viewController.isBeingDismissed {
-            viewController.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            if !viewController.isBeingDismissed {
+                viewController.dismiss(animated: true, completion: nil)
+            }
+            
+            let audioSession = RTCAudioSession.sharedInstance()
+            audioSession.isAudioEnabled = false
         }
-        
-        let audioSession = RTCAudioSession.sharedInstance()
-        audioSession.isAudioEnabled = false
     }
     
+    
+    func callDidFinish(_ viewController: VideoCallViewController, error: Error) {
+        DispatchQueue.main.async {
+            if !viewController.isBeingDismissed {
+                viewController.dismiss(animated: true, completion: nil)
+            }
+            self.showAlert(message: error.localizedDescription)
+        }
+    }
     
     
     // MARK: - Hide keyboard
