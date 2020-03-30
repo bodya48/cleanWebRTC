@@ -60,5 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Broadcast your video to during call</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Communicate during call</string>
 </dict>
 </plist>

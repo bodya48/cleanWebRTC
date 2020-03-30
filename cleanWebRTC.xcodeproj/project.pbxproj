@@ -128,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				AEE6FCAB24310B80008ABF5E /* cleanWebRTC */,
-				AEE6FCAA24310B80008ABF5E /* Products */,
 				AEE6FD2C24310E38008ABF5E /* Frameworks */,
+				AEE6FCAA24310B80008ABF5E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				AEE6FD1B24310C99008ABF5E /* AppClient */,
-				AEE6FD2224310D3D008ABF5E /* common */,
 				AEE6FD1C24310CAC008ABF5E /* SocketRocket */,
 				AEE6FCAC24310B80008ABF5E /* AppDelegate.swift */,
 				AEE6FCAE24310B80008ABF5E /* SceneDelegate.swift */,
@@ -220,6 +219,8 @@
 				AEE6FCEC24310C90008ABF5E /* RTCMediaConstraints+JSON.m */,
 				AEE6FD0324310C92008ABF5E /* RTCSessionDescription+JSON.h */,
 				AEE6FCEF24310C91008ABF5E /* RTCSessionDescription+JSON.m */,
+				AEE6FD2324310D3D008ABF5E /* ARDUtilities.m */,
+				AEE6FD2424310D3D008ABF5E /* ARDUtilities.h */,
 			);
 			path = AppClient;
 			sourceTree = "<group>";
@@ -232,15 +233,6 @@
 				AEE6FD1F24310CAC008ABF5E /* SRWebSocket.h */,
 			);
 			path = SocketRocket;
-			sourceTree = "<group>";
-		};
-		AEE6FD2224310D3D008ABF5E /* common */ = {
-			isa = PBXGroup;
-			children = (
-				AEE6FD2324310D3D008ABF5E /* ARDUtilities.m */,
-				AEE6FD2424310D3D008ABF5E /* ARDUtilities.h */,
-			);
-			path = common;
 			sourceTree = "<group>";
 		};
 		AEE6FD2C24310E38008ABF5E /* Frameworks */ = {

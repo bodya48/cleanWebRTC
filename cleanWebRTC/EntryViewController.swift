@@ -20,6 +20,8 @@ class EntryViewController: UIViewController, UITextFieldDelegate, RTCAudioSessio
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap(_:))))
         self.view.isUserInteractionEnabled = true
+        
+        self.roomIdTextField?.becomeFirstResponder()
     }
     
     
