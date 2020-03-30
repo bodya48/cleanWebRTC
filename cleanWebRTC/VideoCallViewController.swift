@@ -21,6 +21,9 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     let kLocalVideoViewSize     = 120 as CGFloat
     let kLocalVideoViewPadding  = 15 as CGFloat
     
+    var micMuted        = false
+    var videoStopped    = false
+    
     weak var delegate: VideoCallViewControllerDelegate?
     
     var client: ARDAppClient?
@@ -64,10 +67,20 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
+        if self.videoStopped {
+            self.videoStopped = false
+            self.captureController?.startCapture()
+            self.cameraButton.tintColor = UIColor.systemBlue
+        } else {
+            self.videoStopped = true
+            self.captureController?.stopCapture()
+            self.cameraButton.tintColor = UIColor.darkGray
+        }
     }
     
     
     @IBAction func switchCameraButtonPressed(_ sender: Any) {
+        self.captureController?.switchCamera()
     }
     
     

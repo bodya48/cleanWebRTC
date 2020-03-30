@@ -100,27 +100,11 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQC-Uf-xWH" userLabel="remoteVideo">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOe-vR-DUL" userLabel="localVideo">
-                                <rect key="frame" x="269.66666666666669" y="608.66666666666663" width="124.33333333333331" height="179.33333333333337"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="n8S-AV-9vI" firstAttribute="trailing" secondItem="hOe-vR-DUL" secondAttribute="trailing" constant="20" id="4qN-g0-MoC"/>
                             <constraint firstItem="zpj-Ou-Dxa" firstAttribute="leading" secondItem="n8S-AV-9vI" secondAttribute="leading" id="MRx-bR-7Qw"/>
-                            <constraint firstItem="n8S-AV-9vI" firstAttribute="trailing" secondItem="mQC-Uf-xWH" secondAttribute="trailing" id="PvY-vA-H0z"/>
-                            <constraint firstItem="hOe-vR-DUL" firstAttribute="height" secondItem="dCy-ft-0Ja" secondAttribute="height" multiplier="0.2" id="PxT-EL-puM"/>
-                            <constraint firstItem="mQC-Uf-xWH" firstAttribute="top" secondItem="n8S-AV-9vI" secondAttribute="top" id="QW6-cT-IlI"/>
-                            <constraint firstItem="mQC-Uf-xWH" firstAttribute="leading" secondItem="n8S-AV-9vI" secondAttribute="leading" id="g4p-lL-VxW"/>
-                            <constraint firstItem="hOe-vR-DUL" firstAttribute="bottom" secondItem="zpj-Ou-Dxa" secondAttribute="top" constant="-25" id="iFW-3H-TBc"/>
-                            <constraint firstItem="zpj-Ou-Dxa" firstAttribute="top" secondItem="mQC-Uf-xWH" secondAttribute="bottom" id="iHg-Fv-zNe"/>
                             <constraint firstItem="n8S-AV-9vI" firstAttribute="bottom" secondItem="zpj-Ou-Dxa" secondAttribute="bottom" id="jWP-61-gl0"/>
-                            <constraint firstItem="hOe-vR-DUL" firstAttribute="width" secondItem="dCy-ft-0Ja" secondAttribute="width" multiplier="0.3" id="oso-kR-Wo9"/>
                             <constraint firstItem="n8S-AV-9vI" firstAttribute="trailing" secondItem="zpj-Ou-Dxa" secondAttribute="trailing" id="s7J-i7-bRV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n8S-AV-9vI"/>
