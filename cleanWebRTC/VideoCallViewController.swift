@@ -161,6 +161,7 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
                 print("RTCIceConnectionState.disconnected")
             case RTCIceConnectionState.closed:
                 print("RTCIceConnectionState.closed")
+                self.closeCallViewController()
             case RTCIceConnectionState.count:
                 print("RTCIceConnectionState.count")
             default:
