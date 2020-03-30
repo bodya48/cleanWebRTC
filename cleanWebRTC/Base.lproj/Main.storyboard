@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EdN-dX-Omd">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Entry View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="EntryViewController" customModule="cleanWebRTC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="room id" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ifz-vc-x0Q">
+                                <rect key="frame" x="20" y="133" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tfA-ZJ-iWx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGi-nG-vDM">
+                                <rect key="frame" x="113.66666666666669" y="198" width="187" height="40"/>
+                                <color key="backgroundColor" red="0.031372549020000001" green="0.47058823529999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fuX-ZM-ttI"/>
+                                </constraints>
+                                <state key="normal" title="Join call">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="joinCallButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efR-Wl-pg6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ifz-vc-x0Q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="3BP-yt-fLp"/>
+                            <constraint firstItem="QGi-nG-vDM" firstAttribute="width" secondItem="ifz-vc-x0Q" secondAttribute="width" multiplier="0.5" id="C6A-b8-mr2"/>
+                            <constraint firstItem="QGi-nG-vDM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MRF-wr-DNv"/>
+                            <constraint firstItem="ifz-vc-x0Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Or2-HM-Mo4"/>
+                            <constraint firstItem="QGi-nG-vDM" firstAttribute="top" secondItem="ifz-vc-x0Q" secondAttribute="bottom" constant="25" id="cVh-5B-aFL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ifz-vc-x0Q" secondAttribute="trailing" constant="20" id="k4B-T9-AHj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U0V-Cj-vHy"/>
+                    <connections>
+                        <outlet property="roomIdTextField" destination="ifz-vc-x0Q" id="zLG-ko-kjg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
+        </scene>
+        <!--Video Call View Controller-->
+        <scene sceneID="7nf-es-igU">
+            <objects>
+                <viewController storyboardIdentifier="videoCall" id="mKQ-Vs-nR1" customClass="VideoCallViewController" customModule="cleanWebRTC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dCy-ft-0Ja">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpj-Ou-Dxa">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem image="phone.down.fill" catalog="system" id="FRX-3J-T68" userLabel="hangUp">
+                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="hangUpButtonPressed:" destination="mKQ-Vs-nR1" id="Krq-bx-tGn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EUr-4o-xcX"/>
+                                    <barButtonItem image="mic.fill" catalog="system" id="Esp-tM-raI" userLabel="mic">
+                                        <connections>
+                                            <action selector="microphoneButtonPressed:" destination="mKQ-Vs-nR1" id="Xvf-5b-OzF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="CuY-Qa-LK3"/>
+                                    <barButtonItem image="camera.fill" catalog="system" id="XAa-oB-SWh" userLabel="camera">
+                                        <connections>
+                                            <action selector="cameraButtonPressed:" destination="mKQ-Vs-nR1" id="j2n-rL-Pwl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="J7z-OD-d94"/>
+                                    <barButtonItem image="camera.rotate.fill" catalog="system" id="wTi-8c-7l2" userLabel="switchCamera">
+                                        <connections>
+                                            <action selector="switchCameraButtonPressed:" destination="mKQ-Vs-nR1" id="xSR-mE-C0A"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zpj-Ou-Dxa" firstAttribute="leading" secondItem="n8S-AV-9vI" secondAttribute="leading" id="MRx-bR-7Qw"/>
+                            <constraint firstItem="n8S-AV-9vI" firstAttribute="bottom" secondItem="zpj-Ou-Dxa" secondAttribute="bottom" id="jWP-61-gl0"/>
+                            <constraint firstItem="n8S-AV-9vI" firstAttribute="trailing" secondItem="zpj-Ou-Dxa" secondAttribute="trailing" id="s7J-i7-bRV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n8S-AV-9vI"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="XAa-oB-SWh" id="O0I-DS-6Qe"/>
+                        <outlet property="hangUpButton" destination="FRX-3J-T68" id="siY-8S-bT6"/>
+                        <outlet property="microphoneButton" destination="Esp-tM-raI" id="A8J-J1-he0"/>
+                        <outlet property="switchCameraButton" destination="wTi-8c-7l2" id="4Pd-cN-2gB"/>
+                        <outlet property="toolBar" destination="zpj-Ou-Dxa" id="1VT-c5-1NF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hkg-gU-WKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9f3-HZ-HfE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EdN-dX-Omd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="an9-B9-Il6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="jcE-i4-knw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qcu-ZG-avm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="camera.rotate.fill" catalog="system" width="128" height="96"/>
+        <image name="mic.fill" catalog="system" width="108" height="128"/>
+        <image name="phone.down.fill" catalog="system" width="128" height="52"/>
+    </resources>
+</document>
