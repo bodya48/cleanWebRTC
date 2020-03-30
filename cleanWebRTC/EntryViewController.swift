@@ -30,8 +30,13 @@ class EntryViewController: UIViewController, UITextFieldDelegate, RTCAudioSessio
     @IBAction func joinCallButtonTapped(_ sender: Any) {
         self.hideKeyboard()
         
-        if self.roomIdTextField?.text == "" {
+        guard let roomId = self.roomIdTextField?.text else {
             self.showAlert(message: "Missing room id")
+            return
+        }
+        
+        if roomId.count < 5 {
+            self.showAlert(message: "Room name must be 5 or more characters")
             return
         }
         
