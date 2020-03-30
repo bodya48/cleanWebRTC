@@ -63,6 +63,20 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     
     
     @IBAction func microphoneButtonPressed(_ sender: Any) {
+        let session = RTCAudioSession.sharedInstance()
+        
+        if self.micMuted {
+            self.micMuted = false
+            session.useManualAudio = true
+            session.isAudioEnabled = true
+            self.microphoneButton.tintColor = UIColor.systemBlue
+        }
+        else {
+            self.micMuted = true
+            session.useManualAudio = true
+            session.isAudioEnabled = false
+            self.microphoneButton.tintColor = UIColor.darkGray
+        }
     }
     
     
@@ -71,10 +85,13 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
             self.videoStopped = false
             self.captureController?.startCapture()
             self.cameraButton.tintColor = UIColor.systemBlue
-        } else {
+            self.switchCameraButton.isEnabled = true
+        }
+        else {
             self.videoStopped = true
             self.captureController?.stopCapture()
             self.cameraButton.tintColor = UIColor.darkGray
+            self.switchCameraButton.isEnabled = false
         }
     }
     
@@ -179,7 +196,6 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     
     func appClient(_ client: ARDAppClient!, didError error: Error!) {
         DispatchQueue.main.async {
-            print(error.localizedDescription)
             self.showAlert(message: error.localizedDescription)
         }
     }
@@ -193,7 +209,6 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     // MARK: - RTCVideoViewDelegate, LayoutSubviews
     func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
         DispatchQueue.main.async {
-            print("didChangeVideoSize", size)
             if videoView as! UIView == self.remoteVideoView! as UIView {
                 self.remoteVideoSize = size
             }
@@ -212,8 +227,6 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
 
     
     func layoutRemoteVideo(_ bounds: CGRect) {
-        print("layoutRemoteVideo")
-        print(self.remoteVideoSize)
         if self.remoteVideoSize.width > 0 && self.remoteVideoSize.height > 0 {
 
             var remoteVideoFrame = AVMakeRect(aspectRatio: self.remoteVideoSize, insideRect: bounds)
@@ -238,7 +251,6 @@ class VideoCallViewController: UIViewController, ARDAppClientDelegate, RTCAudioS
     
     
     func layoutLocalVideo(_ bounds: CGRect) {
-        print("layoutLocalVideo")
         // Place the view in the bottom right.
         var localVideoFrame         = CGRect(x: 0, y: 0, width: kLocalVideoViewSize, height: kLocalVideoViewSize)
         localVideoFrame.origin.x    = bounds.maxX - localVideoFrame.size.width - kLocalVideoViewPadding
