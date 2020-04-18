@@ -9,10 +9,10 @@ Features:
 Architecture:
 * I use WebRTC framework compiled from the source code in Dec'19 - Jan'20
 * WebRTC.framework was compiled with the following codecs enabled:
-- H264 (High)
-- H264 (Baseline)
-- H264 (Baseline, 42e01f profile, kRTCLevel31ConstrainedBaseline. Manually added in the source code)
-- VP8 
-- VP9 (enabled in settings before compilation)
-- AppClient connection classes from AppRTCMobile demo app by Google (Objective C language)
-- cleanWebRTC app classes in Swift language
+** H264 (High)
+** H264 (Baseline)
+** H264 (Baseline, 42e01f profile, kRTCLevel31ConstrainedBaseline. Manually added in the source code)
+** VP8 
+** VP9 (enabled in settings before compilation)
+* AppClient connection classes from AppRTCMobile demo app by Google (Objective C language)
+* cleanWebRTC app classes in Swift language
